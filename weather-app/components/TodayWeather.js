@@ -12,8 +12,8 @@ export default function TodayWeather({city, weather, currentWeather, timezone}) 
                     <h1>{city.name}{city.state && ` , ${city.state}`} [{city.country}]    ({moment.unix(currentWeather.dt).tz(timezone).format("LT")})</h1>
                         
                     <h2>
-                        <span>Currently {currentWeather.temp.toFixed(0)}&deg;C</span>
-                       <span>    ↑ {weather.temp.max.toFixed(0)}&deg;C    ↓ {weather.temp.min.toFixed(0)}&deg;C</span>
+                        <span>Currently {currentWeather.temp.toFixed(0)}&deg;C</span>
+                       <span>    ↑{weather.temp.max.toFixed(0)}&deg;C   ↓{weather.temp.min.toFixed(0)}&deg;C</span>
                     </h2>
 
                     <div className="today__sun-times">

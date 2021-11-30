@@ -54,11 +54,13 @@ const getCity = (param) => {
 }
 
 const getHourlyWeather = (HourlyData, timezone) =>{
+    const now = moment().tz(timezone).valueOf();
     const endOfDay = moment().tz(timezone).endOf('day').valueOf();
     // devide time by 1000 to transform from milliseconds to seconds
     const endOfDayTimeStamp = Math.floor(endOfDay / 1000);
+    const nowTimeStamp = Math.floor(now/1000);
 
-    return (HourlyData.filter(data => data.dt < endOfDayTimeStamp));
+    return (HourlyData.filter(data => (data.dt < endOfDayTimeStamp) && (data.dt >now)));
 }
 
 export default function city({city,currentWeather,dailyWeather,hourlyWeather,timezone}) {

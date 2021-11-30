@@ -4,12 +4,15 @@ import moment from 'moment-timezone';
 import Image from 'next/image';
 
 export default function TodayWeather({city, weather, currentWeather, timezone}) {
-    
     return (
         <div className="today">
             <div className="today__inner">
                 <div className="today__left-content">
-                    <h1>{city.name}{city.state && ` , ${city.state}`} [{city.country}]    ({moment.unix(currentWeather.dt).tz(timezone).format("LT")})</h1>
+                    
+                    <h1>
+                        {city.name}{city.state && ` , ${city.state}`} ({city.country})
+                    </h1>
+                    
                         
                     <h2>
                         <span>Currently {currentWeather.temp.toFixed(0)}&deg;C</span>
@@ -29,11 +32,17 @@ export default function TodayWeather({city, weather, currentWeather, timezone}) 
                     </div>
                 </div>
                 <div className="today__right-content">
+                <h3>
+                    {moment.unix(currentWeather.dt).tz(timezone).format("dddd, d MMM YYYY")}    
+                </h3>
+                <h3>
+                ({moment.unix(currentWeather.dt).tz(timezone).format("LT")})
+                </h3>
                     <div className="today__icon-wrapper">
                         <div>
                             <Image
                             src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
-                            alt={currentWeather.weather[0].main}
+                            alt={currentWeather.weather[0].description}
                             layout='fill'
                             />
                         </div>

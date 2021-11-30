@@ -168,6 +168,7 @@ h6 {
   }
 
   &__box {
+    
     text-align: center;
     border-radius: 5px;
     padding: 10px;
@@ -186,11 +187,7 @@ h6 {
 
   &__time {
     font-size: 1rem;
-    font-weight: $f-light;
-
-    &--now {
-      font-weight: $f-semi-bold;
-    }
+    font-weight: $f-semi-bold;
   }
 }
 
@@ -201,6 +198,7 @@ h6 {
     opacity: 0.9;
     margin-bottom: 15px;
     font-size: 2rem;
+    color: $primary;
 
     span {
       font-weight: $f-light;

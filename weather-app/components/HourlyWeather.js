@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment-timezone';
 
-export default function HourlyWeather(hourlyWeather, timezone) {
+export default function HourlyWeather({hourlyWeather, timezone}) {
     console.log(hourlyWeather);
     return (
         

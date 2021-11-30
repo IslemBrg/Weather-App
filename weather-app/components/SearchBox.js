@@ -31,7 +31,6 @@ export default function SearchBox() {
             }
         }
         return setResults(matchingCities);
-
     };
 
     return (

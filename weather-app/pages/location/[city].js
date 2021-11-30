@@ -2,6 +2,9 @@ import React from 'react';
 import cities from '../../lib/city.list.json';
 import Head from 'next/head';
 import TodayWeather from '../../components/TodayWeather.js';
+import SearchBox from '../../components/SearchBox';
+import moment from 'moment-timezone';
+import HourlyWeather from '../../components/HourlyWeather.js'
 
 export async function getServerSideProps(context){
 
@@ -27,9 +30,10 @@ export async function getServerSideProps(context){
         {
             props: {
                 city: city,
+                timezone: data.timezone,
                 currentWeather: data.current,
                 dailyWeather: data.daily,
-                hourlyWeather: getHourlyWeather(data.hourly),
+                hourlyWeather: getHourlyWeather(data.hourly, data.timezone),
             }
         }
     )
@@ -49,34 +53,28 @@ const getCity = (param) => {
     }
 }
 
-const getHourlyWeather = (HourlyData) =>{
-    const current = new Date();
-    current.setHours(current.getHours(),0 ,0 ,0);
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() +1 );
-    tomorrow.setHours(0,0,0,0);
+const getHourlyWeather = (HourlyData, timezone) =>{
+    const endOfDay = moment().tz(timezone).endOf('day').valueOf();
+    // devide time by 1000 to transform from milliseconds to seconds
+    const endOfDayTimeStamp = Math.floor(endOfDay / 1000);
 
-    // Devide by 1000 to get timestamps from milliseconds to seconds
-
-    const currentTimeStamp = Math.floor(current.getTime()/1000);
-    const tomorrowTimeStamp = Math.floor(tomorrow.getTime()/1000);
-
-    const todayData = HourlyData.filter(data => data.dt < tomorrowTimeStamp);
-
-    return todayData;
+    return (HourlyData.filter(data => data.dt < endOfDayTimeStamp));
 }
 
-export default function city({city,currentWeather,dailyWeather,hourlyWeather}) {
+export default function city({city,currentWeather,dailyWeather,hourlyWeather,timezone}) {
+    console.log(hourlyWeather);
     return (
         <div>
             <Head>
                 <title>{city.name} weather - Weather Forecast by Islem</title>
             </Head>
+            <SearchBox />
             <div className="page-wrapper">
                 <div className="container">
-                    <TodayWeather city={city} weather={dailyWeather[0]} />
+                    <TodayWeather city={city} weather={dailyWeather[0]} timezone={timezone} currentWeather={currentWeather} />
                 </div>
             </div>
+            <HourlyWeather hourlyWeather={hourlyWeather} timezone={timezone}/>
         </div>
     )
 }

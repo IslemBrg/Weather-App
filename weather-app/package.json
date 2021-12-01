@@ -8,6 +8,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.2",
+    "darkmode-js": "^1.5.7",
     "dotenv": "^10.0.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",

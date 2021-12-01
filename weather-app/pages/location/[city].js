@@ -6,7 +6,27 @@ import SearchBox from '../../components/SearchBox';
 import moment from 'moment-timezone';
 import HourlyWeather from '../../components/HourlyWeather.js'
 import DailyWeather from '../../components/DailyWeather';
-import Link from 'next/link';
+import Darkmode from 'darkmode-js';
+import FamousPlaces from '../../components/FamousPlaces';
+import Background from '../../components/Background';
+
+const options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+
 
 export async function getServerSideProps(context){
 
@@ -71,14 +91,18 @@ export default function city({city,currentWeather,dailyWeather,hourlyWeather,tim
             <Head>
                 <title>{city.name} weather - Weather Forecast by Islem</title>
             </Head>
-            
+            <div className="backgroundCov">
+                <Background/>
+            </div>
             <div className="page-wrapper">
+                
                 <div className="container">
+                    
                     <SearchBox placeholder={"search for another location..."}/>
-                    <Link href="/"><button>Home</button></Link>
                     <TodayWeather city={city} weather={dailyWeather[0]} timezone={timezone} currentWeather={currentWeather} />
                     <HourlyWeather hourlyWeather={hourlyWeather} timezone={timezone}/>
                     <DailyWeather dailyWeather={dailyWeather} currentWeather={currentWeather} timezone={timezone}/>
+                    <FamousPlaces/>
                 </div>
             </div>
         </div>

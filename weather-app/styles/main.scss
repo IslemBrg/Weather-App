@@ -21,6 +21,8 @@ body {
   box-sizing: border-box;
 }
 
+
+
 .container {
   position: relative;
   max-width: 800px;
@@ -28,6 +30,9 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
+}
+.container a {
+  float: right;
 }
 
 h1,
@@ -403,6 +408,7 @@ h6 {
       &:hover {
         span {
           opacity: 1;
+          color: $primary;
         }
 
         img {
@@ -411,6 +417,7 @@ h6 {
       }
 
       span {
+        padding: 35px;
         text-decoration: none;
         font-weight: $f-bold;
         color: $dark;
@@ -514,3 +521,12 @@ h6 {
     transform: rotate(360deg);
   }
 }
+
+.imge {
+  opacity: 0.85;
+}
+
+.darkmode-layer, .darkmode-toggle {
+  z-index: 50000;
+}
+

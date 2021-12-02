@@ -13,6 +13,7 @@ import Link from 'next/link';
 
 
 
+
 export async function getServerSideProps(context){
 
     const city = getCity(context.params.city);

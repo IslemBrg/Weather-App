@@ -51,7 +51,7 @@ export default function SearchBox({placeholder}) {
                         {
                             results.length > 0 ? (
                                 results.map((city) =>
-                                    <li keys={city.slug}>
+                                    <li key={city.slug}>
                                         <Link href= {`/location/${city.slug}`}>
                                             <a>
                                                 {city.name}

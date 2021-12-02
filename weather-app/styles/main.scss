@@ -1,9 +1,8 @@
 $f-light: 300;
 $f-regular: 400;
-$f-semi-bold: 600;
+$f-semi-bold: 6000;
 $f-bold: 700;
 $f-extra-bold: 800;
-
 // colours
 $dark: #242424;
 $primary: #4361ee;
@@ -12,11 +11,24 @@ $tertiary: #22b0db;
 
 // global
 body {
+  background-image: url('../public/images/background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   font-family: "Nunito", sans-serif;
   color: $dark;
   margin: 0;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
 * {
   box-sizing: border-box;
 }
@@ -31,8 +43,14 @@ body {
   padding-right: 15px;
   width: 100%;
 }
-.container a {
-  float: right;
+.butt-container {
+  padding: 12px;
+}
+.butt {
+  position: relative;
+  padding: 5px;
+  margin-left: 20.5rem;
+  margin-right: 20.5rem;
 }
 
 h1,
@@ -524,9 +542,18 @@ h6 {
 
 .imge {
   opacity: 0.85;
+  position:fixed;
+
 }
 
-.darkmode-layer, .darkmode-toggle {
-  z-index: 50000;
+.darkmode-toggle {
+  z-index: 1;
 }
 
+.Headtxt {
+  border-radius: 12px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(43, 91, 223, 0.3);
+}

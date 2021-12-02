@@ -7,11 +7,20 @@ import moment from 'moment-timezone';
 import HourlyWeather from '../../components/HourlyWeather.js'
 import DailyWeather from '../../components/DailyWeather';
 import FamousPlaces from '../../components/FamousPlaces';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Link from 'next/link';
+import { SvgIcon } from '@mui/material';
 
 
 
+
+function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+}
 
 
 export async function getServerSideProps(context){
@@ -77,12 +86,11 @@ export default function city({city,currentWeather,dailyWeather,hourlyWeather,tim
             <Head>
                 <title>{city.name} weather - Weather Forecast by Islem</title>
             </Head>
+            <Link href="/"><IconButton size="large" color="info"><HomeIcon color="primary" fontSize="large"/></IconButton></Link>
             <div className="page-wrapper">
                 
                 <div className="container">
-                    <Link href="/">
-                        <div className="butt-container"><Button variant="contained"><div className="butt">Home</div></Button></div>
-                    </Link>
+                    
                     <SearchBox placeholder={"search for another location..."}/>
                     <TodayWeather city={city} weather={dailyWeather[0]} timezone={timezone} currentWeather={currentWeather} />
                     <HourlyWeather hourlyWeather={hourlyWeather} timezone={timezone}/>

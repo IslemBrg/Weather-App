@@ -45,12 +45,12 @@ body::before {
 }
 .butt-container {
   padding: 12px;
+  border-radius: 20px;
 }
 .butt {
   position: relative;
-  padding: 5px;
-  margin-left: 20.5rem;
-  margin-right: 20.5rem;
+  display: flex;
+  
 }
 
 h1,
@@ -435,7 +435,7 @@ h6 {
       }
 
       span {
-        padding: 35px;
+       
         text-decoration: none;
         font-weight: $f-bold;
         color: $dark;

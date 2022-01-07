@@ -1,0 +1,26 @@
+pool:
+  name: Azure Pipelines
+steps:
+- script: 'npm install'
+  displayName: 'Install Dependencies'
+
+- script: |
+   npm run build
+   
+  displayName: 'Build the project'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/out'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive $(Build.ArtifactStagingDirectory)'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: static-next-web'
+  inputs:
+    ArtifactName: 'static-next-web'

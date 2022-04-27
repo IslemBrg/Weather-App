@@ -7,13 +7,13 @@ export default function Home() {
   return (
     <div>
       <head>
-        <title>Weather Forecast by HKMS </title>
+        <title>Weather Forecast by MetChames </title>
       </head>
       
       <div className="home">
         <div className="container">
           <div className="Headtxt">
-            <h1>Weather Forecast App by HKMS </h1>
+            <h1>Weather Forecast App by MetChames </h1>
             <h1>Built using NEXT.js</h1>
           </div>
           <SearchBox placeholder={"Search for a location..."}/>
